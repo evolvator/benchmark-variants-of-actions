@@ -13,8 +13,8 @@ for (var i = 0; i < 1000; i++) {
   functions[i] = f;
 }
 
-eval(`suite.add('switch', function() { var s = '999'; switch (s) { ${_.map(functions, function(v, k) { return `case '${k}': return f();`; })} } });`);
-eval(`suite.add('if', function() { var s = '999'; ${_.map(functions, function(v, k) { return `if (s == '${k}') return f();`; })} });`);
+eval(`suite.add('switch', function() { var s = '999'; switch (s) { ${_.map(functions, function(v, k) { return `case '${k}': return f();`; }).join('')} } });`);
+eval(`suite.add('if', function() { var s = '999'; ${_.map(functions, function(v, k) { return `if (s == '${k}') return f();`; }).join('')} });`);
 suite.add('hash-of-functions', function() {
   var s = '999';
   functions[s]();
