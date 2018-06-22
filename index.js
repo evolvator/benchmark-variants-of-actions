@@ -15,7 +15,7 @@ var functions = {
 
 suite.add('switch', function() {
   var selected = 'c';
-  switch (c) {
+  switch (selected) {
     case 'a': return f();
     case 'b': return f();
     case 'c': return f();
