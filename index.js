@@ -5,72 +5,36 @@ var async = require('async');
 var foreach = require('foreach');
 var arrayEach = require('array-each');
 
-async.timesSeries(
-  15,
-  function(t, next) {
-    var count = Math.pow(2, t);
-    var suite = new Benchmark.Suite(`${count} array.length`);
+var suite = new Benchmark.Suite(`variants of actions`);
 
-    var array = _.times(count, function(t) {
-      return t;
-    });
+var f = function() {};
 
-    suite.add('for', function() {
-      for (var i = 0; i < count; i++) {
-        array[i];
-      };
-    });
-    suite.add('while', function() {
-      var i = 0;
-      while (i < count) {
-        array[i];
-        i++;
-      }
-    });
-    suite.add('for-in', function() {
-      for (var i in array) {
-        array[i];
-      }
-    });
-    suite.add('for-of', function() {
-      for (var f of array) {
-        f;
-      }
-    });
-    suite.add('forEach', function() {
-      array.forEach(function(value, index) {
-        value;
-      });
-    });
-    suite.add('lodash@4.17.10 forEach', function() {
-      _.forEach(array, function(value, index) {
-        value;
-      });
-    });
-    suite.add('async@2.6.1 forEachOf', function() {
-      async.forEachOf(array, function(value, index, next) {
-        value;
-        next();
-      });
-    });
-    suite.add('async@2.6.1 forEachOfSeries', function() {
-      async.forEachOfSeries(array, function(value, index, next) {
-        value;
-        next();
-      });
-    });
-    suite.add('foreach@2.0.5', function() {
-      foreach(array, function(value, index) {
-        value;
-      });
-    });
-    suite.add('array-each@1.0.1', function() {
-      arrayEach(array, function(value, index) {
-        value;
-      });
-    });
+var functions = {
+  c: f
+};
 
-    tb.wrapSuite(suite, () => next());
-    suite.run({ async: true });
+suite.add('switch', function() {
+  var selected = 'c';
+  switch (c) {
+    case 'a': return f();
+    case 'b': return f();
+    case 'c': return f();
+    case 'd': return f();
+    case 'e': return f();
   }
-);
+});
+suite.add('if', function() {
+  var selected = 'c';
+  if (selected === 'a') return f();
+  if (selected === 'b') return f();
+  if (selected === 'c') return f();
+  if (selected === 'd') return f();
+  if (selected === 'e') return f();
+});
+suite.add('hash-of-functions', function() {
+  var selected = 'c';
+  functions[selected]();
+});
+
+tb.wrapSuite(suite);
+suite.run({ async: true });
