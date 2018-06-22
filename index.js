@@ -8,32 +8,16 @@ var arrayEach = require('array-each');
 var suite = new Benchmark.Suite(`variants of actions`);
 
 var f = function() {};
+var functions = {};
+for (var i = 0; i < 1000; i++) {
+  functions[i] = f;
+}
 
-var functions = {
-  c: f
-};
-
-suite.add('switch', function() {
-  var selected = 'c';
-  switch (selected) {
-    case 'a': return f();
-    case 'b': return f();
-    case 'c': return f();
-    case 'd': return f();
-    case 'e': return f();
-  }
-});
-suite.add('if', function() {
-  var selected = 'c';
-  if (selected === 'a') return f();
-  if (selected === 'b') return f();
-  if (selected === 'c') return f();
-  if (selected === 'd') return f();
-  if (selected === 'e') return f();
-});
+eval(`suite.add('switch', function() { var s = '999'; switch (s) { ${_.map(functions, function(v, k) { return `case '${k}': return f();`; })} } });`);
+eval(`suite.add('if', function() { var s = '999'; ${_.map(functions, function(v, k) { return `if (s == '${k}') return f();`; })} });`);
 suite.add('hash-of-functions', function() {
-  var selected = 'c';
-  functions[selected]();
+  var s = '999';
+  functions[s]();
 });
 
 tb.wrapSuite(suite);
