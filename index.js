@@ -1,10 +1,6 @@
 var Benchmark = require('benchmark');
 var tb = require('travis-benchmark');
 var _ = require('lodash');
-var async = require('async');
-var foreach = require('foreach');
-var arrayEach = require('array-each');
-
 var suite = new Benchmark.Suite(`variants of actions`);
 
 var f = function() {};
