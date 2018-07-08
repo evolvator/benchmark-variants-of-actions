@@ -2,7 +2,7 @@
 
 What's the fastest way to choose a actions from the variants.
 
-[![Build Status](https://travis-ci.org/evolvator/benchmark-variants-of-actions.svg?branch=master)](https://travis-ci.org/evolvator/benchmark-variants-of-actions)
+[![Build Status](https://travis-ci.org/evolvator/benchmark-variants-of-actions.svg?branch=code)](https://travis-ci.org/evolvator/benchmark-variants-of-actions)
 
 [Executable code](https://github.com/evolvator/benchmark-variants-of-actions/tree/code)
 
