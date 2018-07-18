@@ -2,6 +2,8 @@
 
 What's the fastest way to choose a actions from the variants.
 
+## [DEPRICATED](https://github.com/orgs/evolvator/projects?utf8=%E2%9C%93&query=is%3Aclosed+Tasks+v0)
+
 [![Build Status](https://travis-ci.org/evolvator/benchmark-variants-of-actions.svg?branch=code)](https://travis-ci.org/evolvator/benchmark-variants-of-actions)
 
 [Executable code](https://github.com/evolvator/benchmark-variants-of-actions/tree/code)
